@@ -15,9 +15,10 @@ object ReactApp {
   case class Backend(scope: BackendScope[Props, Unit]) {
     def render(props: Props): VdomElement = {
       <.div(
-        ^.cls := "container mx-auto py-5",
+        ^.cls := "container mx-auto space-y-5",
         <.div("React App"),
         TodoApp()(),
+        MyButton(color = MyButton.Color.Primary, onClick = Callback.log("Primary"))("Primary")
       )
     }
   }

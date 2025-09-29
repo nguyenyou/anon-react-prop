@@ -25,7 +25,7 @@ object TodoApp {
         ^.cls := "space-y-5",
         <.div("Todo App"),
         AddTodo()(),
-        MyButton(color = "blue", onClick = Callback.log("Hello"))("Click me")
+        MyButton(color = MyButton.Color.Success, onClick = Callback.log("Hello"))("Click me")
       )
     }
   }

@@ -3,7 +3,7 @@ package www
 import japgolly.scalajs.react.*
 import japgolly.scalajs.react.vdom.html_<^.*
 
-case class MyButton(color: String, onClick: Callback = Callback.empty) {
+case class MyButton(color: MyButton.Color = MyButton.Color.Primary, onClick: Callback = Callback.empty) {
   def apply(children: VdomNode*): VdomElement = {
     MyButton.component(this)(children*)
   }
@@ -12,10 +12,23 @@ case class MyButton(color: String, onClick: Callback = Callback.empty) {
 object MyButton {
   type Props = MyButton
 
+  enum Color {
+    case Primary, Secondary, Success, Error
+  }
+
+  def colorToClass(color: Color) = {
+    color match {
+      case Color.Primary => "btn-primary"
+      case Color.Secondary => "btn-secondary"
+      case Color.Success => "btn-success"
+      case Color.Error => "btn-error"
+    }
+  }
+
   private def render(props: Props, children: PropsChildren) = {
     <.button(
       ^.onClick --> props.onClick,
-      ^.cls := "btn btn-primary",
+      ^.cls := s"btn ${colorToClass(props.color)}",
       children
     )
   }
