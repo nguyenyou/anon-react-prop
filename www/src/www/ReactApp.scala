@@ -14,12 +14,15 @@ object ReactApp {
 
   case class Backend(scope: BackendScope[Props, Unit]) {
     def render(props: Props): VdomElement = {
-      <.div("React Appppp")
+      <.div(
+        <.div("React App"),
+        TodoApp()(),
+      )
     }
   }
 
   val component = ScalaComponent
-    .builder[Props](getClass.getSimpleName)
+    .builder[Props](getClass.getSimpleName.stripSuffix("$"))
     .renderBackend[Backend]
     .build
 }
