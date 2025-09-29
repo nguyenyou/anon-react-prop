@@ -26,6 +26,7 @@ object AddTodo {
         <.div("Add Todo"),
         MyInput(
           value = state.value,
+          placeholder = "Add a todo",
           onChange = (value) => {
             scope.modState(_.copy(value = value))
           }
@@ -36,7 +37,7 @@ object AddTodo {
 
   val component = ScalaComponent
     .builder[Props](getClass.getSimpleName.stripSuffix("$"))
-    .initialState(State("hello"))
+    .initialState(State(""))
     .renderBackend[Backend]
     .build
 }

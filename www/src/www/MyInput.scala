@@ -3,7 +3,7 @@ package www
 import japgolly.scalajs.react.*
 import japgolly.scalajs.react.vdom.html_<^.*
 
-case class MyInput(value: String, onChange: String => Callback = _ => Callback.empty) {
+case class MyInput(value: String, placeholder: String = "", onChange: String => Callback = _ => Callback.empty) {
   def apply(): VdomElement = {
     MyInput.component(this)
   }
@@ -23,6 +23,7 @@ object MyInput {
     def render(props: Props, state: State): VdomElement = {
       <.input(
         ^.value := props.value,
+        ^.placeholder := props.placeholder,
         ^.onChange ==> handleOnChange(props)
       )
     }
