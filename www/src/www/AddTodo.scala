@@ -3,14 +3,14 @@ package www
 import japgolly.scalajs.react.*
 import japgolly.scalajs.react.vdom.html_<^.*
 
-case class TodoApp() {
+case class AddTodo() {
   def apply(): VdomElement = {
-    TodoApp.component(this)
+    AddTodo.component(this)
   }
 }
 
-object TodoApp {
-  type Props = TodoApp
+object AddTodo {
+  type Props = AddTodo
 
   case class State(value: String)
 
@@ -22,8 +22,13 @@ object TodoApp {
 
     def render(props: Props, state: State): VdomElement = {
       <.div(
-        <.div("Todo App"),
-        AddTodo()()
+        <.div("Add Todo"),
+        MyInput(
+          value = state.value,
+          onChange = (value) => {
+            scope.modState(_.copy(value = value))
+          }
+        )()
       )
     }
   }
