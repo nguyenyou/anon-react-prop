@@ -22,6 +22,7 @@ object AddTodo {
 
     def render(props: Props, state: State): VdomElement = {
       <.div(
+        ^.cls := "space-y-5",
         <.div("Add Todo"),
         MyInput(
           value = state.value,

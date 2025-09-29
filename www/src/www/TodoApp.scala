@@ -22,8 +22,10 @@ object TodoApp {
 
     def render(props: Props, state: State): VdomElement = {
       <.div(
+        ^.cls := "space-y-5",
         <.div("Todo App"),
-        AddTodo()()
+        AddTodo()(),
+        MyButton(color = "blue", onClick = Callback.log("Hello"))("Click me")
       )
     }
   }
