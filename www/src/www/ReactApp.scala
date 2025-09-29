@@ -17,7 +17,7 @@ object ReactApp {
       <.div(
         ^.cls := "container mx-auto space-y-5",
         <.div("React App"),
-        TodoApp()(),
+        ChangeButtonColorApp()(),
         MyButton(color = MyButton.Color.Primary, onClick = Callback.log("Primary"))("Primary")
       )
     }

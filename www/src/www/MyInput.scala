@@ -22,6 +22,7 @@ object MyInput {
 
     def render(props: Props, state: State): VdomElement = {
       <.input(
+        ^.cls := "input",
         ^.value := props.value,
         ^.placeholder := props.placeholder,
         ^.onChange ==> handleOnChange(props)

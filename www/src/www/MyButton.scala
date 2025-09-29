@@ -12,8 +12,12 @@ case class MyButton(color: MyButton.Color = MyButton.Color.Primary, onClick: Cal
 object MyButton {
   type Props = MyButton
 
-  enum Color {
-    case Primary, Secondary, Success, Error
+  sealed trait Color
+  object Color {
+    case object Primary extends Color
+    case object Secondary extends Color
+    case object Success extends Color
+    case object Error extends Color
   }
 
   def colorToClass(color: Color) = {
@@ -34,7 +38,7 @@ object MyButton {
   }
 
   private val component = ScalaComponent
-    .builder[Props](getClass.getSimpleName)
+    .builder[Props](getClass.getSimpleName.stripSuffix("$"))
     .stateless
     .render_PC(render)
     .build
