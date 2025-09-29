@@ -15,20 +15,6 @@ object ChangeButtonColorApp {
   case class State(buttonColor: MyButton.Color)
 
   case class Backend(scope: BackendScope[Props, State]) {
-    def handleOnChange(props: Props)(e: ReactEventFromInput) = {
-      val value = e.target.value
-      println(value)
-      if (value == "primary") {
-        scope.modState(_.copy(buttonColor = MyButton.Color.Primary))
-      } else if (value == "secondary") {
-        scope.modState(_.copy(buttonColor = MyButton.Color.Secondary))
-      } else if (value == "success") {
-        scope.modState(_.copy(buttonColor = MyButton.Color.Success))
-      } else if (value == "error") {
-        scope.modState(_.copy(buttonColor = MyButton.Color.Error))
-      }
-    }
-
     def render(props: Props, state: State): VdomElement = {
       <.div(
         ^.cls := "space-y-5",
